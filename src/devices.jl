@@ -27,7 +27,7 @@ immutable CuCapability
 end
 
 function name(dev::CuDevice)
-    const buflen = 256
+    buflen = 256
     buf = Array(Cchar, buflen)
     @cucall(cuDeviceGetName, (Ptr{Cchar}, Cint, Cint), buf, buflen, dev.handle)
     bytestring(pointer(buf))
